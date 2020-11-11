@@ -1,8 +1,8 @@
 #data = {'date':[], 'time':[], 'tempout':[]}
-columns = {'date':0, 'time':1, 'tempout':2, 'windspeed':7}
+columns = {'date':0, 'time':1, 'tempout':2, 'windspeed':7, 'windchill':12}
 
 #data types for each column only if non-string
-types = {'tempout': float, 'windspeed':float}
+types = {'tempout': float, 'windspeed':float, 'windchill':float}
 
 data = {}
 for column in columns:
@@ -37,11 +37,16 @@ windchill = []
 for temp, windspeed in zip(data['tempout'],data['windspeed']):
     windchill.append(compute_windchill(temp, windspeed))
 
-print(windchill)
+#print(windchill)
+for wc_data, wc_comp in zip(data['windchill'], windchill):
+    print(f'{wc_data:.5f} {wc_comp:.5f} {wc_data - wc_comp:.5f}')
+
+
+
 #       data['date'].append(split_line[0])
 #       data['time'].append(split_line[1])
 #       data['tempout'].append(split_line[2])
 
 #print(data['time'])
 #       data['tempout'].append(float(split_line[2]))
-print(data['tempout'])
+#print(data['tempout'])
